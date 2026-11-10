@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "openclaymation"
+version = "0.1.0"
+description = "Autonomous Stop-Motion & Claymation AI Studio for Claude, MCP & Blender"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "OpenClaymation Contributors" }
+]
+keywords = [
+    "claude",
+    "anthropic",
+    "mcp",
+    "model-context-protocol",
+    "blender",
+    "claymation",
+    "stop-motion",
+    "animation",
+    "3d",
+    "ai-agent"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "Topic :: Multimedia :: Graphics :: 3D Modeling",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12"
+]
+dependencies = [
+    "mcp>=1.0.0",
+    "pydantic>=2.0.0",
+    "click>=8.0.0",
+    "rich>=13.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0"
+]
+media = [
+    "ffmpeg-python>=0.2.0"
+]
+
+[project.scripts]
+openclaymation = "openclaymation.cli:main"
+clay-mcp = "openclaymation.mcp.server:run"
+
+[project.urls]
+Homepage = "https://github.com/kalimahsaktirinjani/OpenClaymation"
+Documentation = "https://github.com/kalimahsaktirinjani/OpenClaymation/blob/main/docs/ARCHITECTURE.md"
+Repository = "https://github.com/kalimahsaktirinjani/OpenClaymation"
+"Bug Tracker" = "https://github.com/kalimahsaktirinjani/OpenClaymation/issues"

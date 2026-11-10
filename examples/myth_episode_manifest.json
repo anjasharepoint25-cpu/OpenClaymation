@@ -1,0 +1,69 @@
+{
+  "title": "The Origin of Olympus: Episode 1",
+  "series": "Claymation Mythology",
+  "aspect_ratio": "9:16",
+  "render_resolution": [1080, 1920],
+  "base_fps": 24,
+  "cadence_fps": 12,
+  "frame_hold": 2,
+  "characters": {
+    "Gaia": {
+      "palette": "terracotta",
+      "hair": "coiled brown clay with gold laurel",
+      "tunic": "olive_green",
+      "fingerprint_scale": 26.0
+    },
+    "Uranus": {
+      "palette": "midnight_blue",
+      "accents": "mustard_yellow stars",
+      "fingerprint_scale": 28.0
+    },
+    "Kronos": {
+      "palette": "terracotta",
+      "armor": "sculpting_grey",
+      "cape": "plasticine_red",
+      "fingerprint_scale": 24.0
+    }
+  },
+  "scenes": [
+    {
+      "scene_id": "act_01_creation",
+      "name": "The Clay Cosmos Emerges",
+      "duration_sec": 8.0,
+      "distinct_frames_12fps": 96,
+      "output_frames_24fps": 192,
+      "audio_cue": "In the primordial void, before gods walked the earth, there was only boundless clay...",
+      "camera": {
+        "lens_mm": 50,
+        "f_stop": 2.8,
+        "chatter_intensity": 0.003
+      }
+    },
+    {
+      "scene_id": "act_02_conspiracy",
+      "name": "Gaia's Whispers",
+      "duration_sec": 10.5,
+      "distinct_frames_12fps": 126,
+      "output_frames_24fps": 252,
+      "audio_cue": "Deep within her stony heart, Gaia shaped a weapon of adamant...",
+      "camera": {
+        "lens_mm": 65,
+        "f_stop": 2.4,
+        "chatter_intensity": 0.004
+      }
+    },
+    {
+      "scene_id": "act_03_cliffhanger",
+      "name": "The Unfolding Fate",
+      "duration_sec": 6.0,
+      "distinct_frames_12fps": 72,
+      "output_frames_24fps": 144,
+      "audio_cue": "Kronos took the blade. But can a titan truly escape his father's curse?",
+      "end_card": {
+        "text": "BERSAMBUNG...",
+        "teaser": "Episode 2: The Golden Age of Fear",
+        "fade_duration_sec": 1.5
+      }
+    }
+  ]
+}
