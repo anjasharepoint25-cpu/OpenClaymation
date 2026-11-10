@@ -52,6 +52,25 @@ Inspired by the tactile magic of *Aardman Animations* (*Wallace & Gromit*, *Chic
 | 🤖 **100% Native MCP Protocol** | Anthropic Model Context Protocol compliant. Works out-of-the-box with Claude Desktop, Claude Code, Cursor, and Antigravity. |
 | 🎙️ **Automated Audio-Sync** | Automatically detects breath & paragraph pauses via silence detection, adjusting frame timing per act and burning in styled 9:16 subtitles. |
 | 🎛️ **Dual-Mode Workflow** | Use it as a headless AI agent pipeline or as an interactive GUI panel inside Blender. |
+| 🎬 **Battle-Tested `anim_lib`** | Included lightweight procedural animation library (`pop`, `hop`, `walk`, `armsto`, `headto`, `mood`, `ending`) dynamically keyed to audio duration arrays `DUR=[...]`. |
+| 🧪 **Organic Clay Boil (`BoilCtl`)** | Automatic `CONSTANT` keyframing every 3 frames on displacement modifiers replicating authentic hand-sculpted plasticine boiling. |
+
+---
+
+## 📦 Battle-Tested Production Templates (`templates/`)
+
+OpenClaymation includes the complete production pipeline used to produce 24 broadcast-ready myth reels:
+
+1. **`templates/anim_lib.py`**:
+   Zero-dependency procedural animation primitives for Blender. Everything links dynamically to `DUR=[...]` (audio seconds per act). If voiceover length changes, re-running `anim_epN` automatically retimes the entire scene.
+2. **`templates/runner.py`**:
+   The episode orchestrator: verifies 6-act scripts (190–200 words target), generates 25% resolution test frames (11 contact sheet stills), and prepares clean `.blend` scene files.
+3. **`templates/rakit_video.py`**:
+   Native Blender VSE video compiler that merges 12 FPS PNG frames and 6-act audio tracks into a pristine H.264/AAC MP4 without needing command-line tools.
+4. **`templates/CARA_RENDER.txt`**:
+   Detailed Windows (PowerShell) and macOS batch rendering instructions for GPU/CPU farms.
+5. **`templates/subtitle_template.ass`**:
+   Production-ready ASS subtitle styling: Poppins Bold 80, golden yellow `&H005AC6F5`, dark outline 7, `MarginV 340`.
 
 ---
 

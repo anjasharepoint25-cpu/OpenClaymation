@@ -1,0 +1,17 @@
+[Script Info]
+Title: OpenClaymation Subtitle Template
+ScriptType: v4.00+
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+YCbCr Matrix: None
+PlayResX: 1080
+PlayResY: 1920
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Poppins,80,&H005AC6F5,&H000000FF,&H00060C18,&H00000000,-1,0,0,0,100,100,0,0,1,7,0,2,80,80,340,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.50,0:00:03.20,Default,,0,0,0,,Sebelum para dewa berkuasa...
+Dialogue: 0,0:00:03.35,0:00:06.10,Default,,0,0,0,,Alam semesta hanyalah jurang hampa yang beku.

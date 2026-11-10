@@ -126,6 +126,42 @@ def add_camera_chatter(camera_obj, location_intensity=0.003, rotation_intensity=
     return True
 
 
+def setup_clay_boil(last_frame: int = 1080, boil_step: int = 3):
+    """
+    Sets up the classic stop-motion clay 'boil' effect.
+    Animates the 'BoilCtl' empty with CONSTANT interpolation every N frames (default 3)
+    to drive displacement modifiers, replicating the organic finger-kneading variations.
+    """
+    if not bpy:
+        return False
+
+    import random
+    random.seed(42)
+
+    boil_obj = bpy.data.objects.get("BoilCtl")
+    if not boil_obj:
+        boil_obj = bpy.data.objects.new("BoilCtl", None)
+        boil_obj.empty_display_type = 'SPHERE'
+        boil_obj.empty_display_size = 0.2
+        bpy.context.collection.objects.link(boil_obj)
+
+    if boil_obj.animation_data:
+        boil_obj.animation_data_clear()
+
+    for f in range(1, last_frame + 1, boil_step):
+        boil_obj.location = tuple(random.uniform(-0.03, 0.03) for _ in range(3))
+        boil_obj.keyframe_insert("location", frame=f)
+
+    # Force CONSTANT interpolation on all BoilCtl keyframes
+    action = boil_obj.animation_data.action if boil_obj.animation_data else None
+    if action:
+        for fcurve in get_all_fcurves(action):
+            for kp in fcurve.keyframe_points:
+                kp.interpolation = 'CONSTANT'
+
+    return True
+
+
 def setup_macro_lens(camera_obj, target_obj=None, focal_length=65.0, f_stop=2.8):
     """
     Configures shallow depth of field (DoF) to emphasize the miniature scale

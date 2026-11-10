@@ -1,0 +1,44 @@
+MITOS NORDIK 101 — EPISODE 1
+Status: animasi disiapkan; narasi belum direkam; DUR masih perkiraan.
+Target: 1080x1920, 9:16, 12 fps, Cycles 64 sampel + denoise.
+Frame uji di test_frames menggunakan 25% dan 20 sampel.
+
+1. Salin seluruh folder episode ke PC. Buka Mitos_Nordik_Ep1_clay.blend.
+   Pada Edit > Preferences > System, pilih perangkat GPU yang tersedia di PC
+   (OptiX/CUDA/HIP sesuai kartu). Metal hanya untuk Mac.
+   Render Properties > Cycles > Device: GPU Compute.
+   Bila GPU tidak tersedia, pilih CPU. Jangan ubah resolusi atau fps.
+
+2. Pastikan folder render\frames berada di samping .blend.
+   Render > Render Animation menghasilkan seluruh PNG.
+   Alternatif PowerShell, setelah masuk folder episode:
+   & "C:\Program Files\Blender Foundation\Blender 5.2\blender.exe" -b "Mitos_Nordik_Ep1_clay.blend" -o "//render/frames/ep1_" -F PNG -a
+
+3. Setelah SEMUA frame PNG selesai, rakit video dari folder episode:
+   & "C:\Program Files\Blender Foundation\Blender 5.2\blender.exe" -b "Mitos_Nordik_Ep1_clay.blend" -P rakit_video.py
+   Alternatif tanpa command line:
+   buka .blend > tab Scripting > Open rakit_video.py > Run Script.
+   Script berhenti bila ada PNG yang hilang.
+   Tanpa audio, keluarannya render\Mitos_Nordik_Ep1_preview_silent.mp4.
+   Script memakai nama baru bila keluaran sudah ada.
+
+4. NARASI BELUM DIBUAT. Jangan menganggap preview senyap sebagai versi final.
+   Jika nanti audio/babak1.mp3 sampai babak6.mp3 tersedia:
+   ukur durasi tiap klip, perbarui DUR di text block anim_ep1,
+   jalankan ulang anim_ep1, pack audio, lalu render PNG ulang.
+   Setelah sinkronisasi diverifikasi, ubah scene["audio_status"]="SIAP".
+   Barulah rakit video bersuara. DUR sekarang adalah perkiraan.
+
+5. Subtitle belum dibuat karena audio belum ada.
+   Setelah MP4 bersuara selesai, periksa jeda:
+   ffmpeg -i Mitos_Nordik_Ep1.mp4 -af silencedetect=noise=-33dB:d=0.12 -f null -
+   Cocokkan kalimat dengan jeda napas; jangan memakai waktu perkiraan sebagai SRT final.
+   ASS: PlayResX 1080, PlayResY 1920, Poppins Bold 80,
+   warna &H005AC6F5, outline &H00180C06, tebal 7, Alignment 2,
+   MarginV 340, MarginL/R 80.
+   ffmpeg -i Mitos_Nordik_Ep1.mp4 -vf "ass=subtitle.ass" -c:v libx264 -crf 18 -pix_fmt yuv420p -c:a copy -movflags +faststart Mitos_Nordik_Ep1_sub.mp4
+   Simpan hasil subtitle memakai nama baru tanpa menimpa video asli.
+
+Text blocks: character_builder (helper pembuat karakter), anim_lib,
+anim_ep1 (dimulai DUR), runner (run_ep/patch_ep/render_tests).
+Panggil ulang anim_ep1 setelah mengubah DUR; semua waktu terikat ke DUR.
